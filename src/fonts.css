@@ -1,0 +1,9 @@
+@font-face {
+    font-family: 'Space Mono Bold';
+    src: local('SpaceMono-Bold'), url(./assets/fonts/SpaceMono-Bold.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'Space Mono Reg';
+    src: local('SpaceMono-Regular'), url(./assets/fonts/SpaceMono-Regular.ttf) format('truetype');
+}
