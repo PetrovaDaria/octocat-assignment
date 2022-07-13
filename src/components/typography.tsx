@@ -1,5 +1,5 @@
 import React from 'react';
-import {cx} from '@emotion/css';
+import {css, cx} from '@emotion/css';
 import {
   darkTheme,
   h1Style,
@@ -40,6 +40,10 @@ export const Typography = ({
   fontColorType
 }: TTypographyProps): JSX.Element => {
  return (
-  <p className={cx(styles[type], fontColorStyles[fontColorType](darkTheme))}>{children}</p>
+  <p className={cx(
+    styles[type],
+    fontColorStyles[fontColorType](darkTheme),
+    css({margin: 0})
+  )}>{children}</p>
  );
 };

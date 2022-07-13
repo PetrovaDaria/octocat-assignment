@@ -1,4 +1,5 @@
 import {css} from "@emotion/css";
+import {CSSInterpolation, CSSObject, Emotion} from "@emotion/css/create-instance";
 
 export type TTheme = {
   mainBackground: string;
@@ -11,7 +12,7 @@ export type TTheme = {
 }
 
 export const lightTheme: TTheme = {
-  activeBtn: "",
+  activeBtn: "#0079ff",
   hoveredBtn: "",
   secondaryFont: "",
   unavailableFont: "",
@@ -21,7 +22,7 @@ export const lightTheme: TTheme = {
 };
 
 export const darkTheme: TTheme = {
-  activeBtn: "",
+  activeBtn: "#0079ff",
   hoveredBtn: "",
   secondaryFont: "",
   unavailableFont: "",
@@ -42,11 +43,13 @@ export const h2Style = css({
   lineHeight: '33px'
 });
 
-export const h3Style = css({
+export const h3CssObject: CSSObject = {
   fontFamily: 'Space Mono Reg',
   fontSize: '16px',
-  lineHeight: '24px'
-});
+  lineHeight: '24px',
+}
+
+export const h3Style = css(h3CssObject);
 
 export const h4Style = css({
   fontFamily: 'Space Mono Reg',
@@ -60,9 +63,13 @@ export const pStyle = css({
   lineHeight: '25px'
 });
 
-export const mainFontColorStyle = (theme: TTheme) => css({
-  color: theme.mainFont
-})
+export const mainFontColorCssObject: (theme: TTheme) => CSSObject = (theme: TTheme) => {
+  return {
+    color: theme.mainFont
+  }
+}
+
+export const mainFontColorStyle = (theme: TTheme) => css(mainFontColorCssObject(theme))
 
 export const secondaryFontColorStyle = (theme: TTheme) => css({
   color: theme.secondaryFont
