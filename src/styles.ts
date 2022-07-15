@@ -5,30 +5,35 @@ export type TTheme = {
   mainBackground: string;
   blockBackground: string;
   mainFont: string;
-  secondaryFont: string;
   unavailableFont: string;
-  activeBtn: string;
+  active: string;
   hoveredBtn: string;
+  icon: string;
+  notAvailable: string;
 }
 
+const notAvailableColor = '#f6f8ff';
+
 export const lightTheme: TTheme = {
-  activeBtn: "#0079ff",
+  active: "#0079ff",
   hoveredBtn: "",
-  secondaryFont: "",
   unavailableFont: "",
   blockBackground: "#fefefe",
   mainFont: "#2b3442",
-  mainBackground: "#f6f8ff"
+  mainBackground: "#f6f8ff",
+  icon: "#4b6a9b",
+  notAvailable: notAvailableColor
 };
 
 export const darkTheme: TTheme = {
-  activeBtn: "#0079ff",
+  active: "#0079ff",
   hoveredBtn: "",
-  secondaryFont: "",
   unavailableFont: "",
   blockBackground: "#1e2a47",
   mainFont: "#ffffff",
-  mainBackground: "#141d2f"
+  mainBackground: "#141d2f",
+  icon: '#ffffff',
+  notAvailable: notAvailableColor
 };
 
 export const h1Style = css({
@@ -71,7 +76,30 @@ export const mainFontColorCssObject: (theme: TTheme) => CSSObject = (theme: TThe
 
 export const mainFontColorStyle = (theme: TTheme) => css(mainFontColorCssObject(theme))
 
-export const secondaryFontColorStyle = (theme: TTheme) => css({
-  color: theme.secondaryFont
+export const activeFontColorStyle = (theme: TTheme) => css({
+  color: theme.active
 })
+
+export const notAvailableFontColorStyle = (theme: TTheme) => css({
+  color: theme.notAvailable
+})
+
+export const baseBlockStyle = (theme: TTheme) => css({
+  background: theme.blockBackground,
+  borderRadius: '10px'
+});
+
+export const baseIconStyle = (theme: TTheme) => css({
+  path: {
+    fill: theme.icon
+  }
+});
+
+export const notAvailableIconStyle = css({
+  path: {
+    fill: notAvailableColor
+  }
+})
+
+
 

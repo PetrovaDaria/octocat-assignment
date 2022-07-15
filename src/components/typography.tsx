@@ -8,12 +8,12 @@ import {
   h4Style,
   mainFontColorStyle,
   pStyle,
-  secondaryFontColorStyle,
-  TTheme
+  activeFontColorStyle,
+  TTheme, notAvailableFontColorStyle
 } from "../styles";
 
 type TTypographyType = 'h1' | 'h2' | 'h3' | 'h4' | 'p';
-type TFontColorType = 'main' | 'secondary';
+type TFontColorType = 'main' | 'active' | 'not_available';
 
 const styles: Record<TTypographyType, string> = {
   h1: h1Style,
@@ -25,7 +25,8 @@ const styles: Record<TTypographyType, string> = {
 
 const fontColorStyles: Record<TFontColorType, (theme: TTheme) => string> = {
   main: mainFontColorStyle,
-  secondary: secondaryFontColorStyle
+  active: activeFontColorStyle,
+  not_available: notAvailableFontColorStyle
 }
 
 type TTypographyProps = {
