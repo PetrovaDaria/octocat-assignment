@@ -10,8 +10,11 @@
   "dependencies": {
     "@emotion/css": "^11.9.0",
     "@emotion/react": "^11.9.3",
+    "@reduxjs/toolkit": "^1.8.3",
+    "@types/react-redux": "^7.1.24",
     "react": "^18.0.0",
-    "react-dom": "^18.0.0"
+    "react-dom": "^18.0.0",
+    "react-redux": "^8.0.2"
   },
   "devDependencies": {
     "@honkhonk/vite-plugin-svgr": "^1.1.0",

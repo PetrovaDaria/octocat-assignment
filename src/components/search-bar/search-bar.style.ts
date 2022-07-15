@@ -25,10 +25,6 @@ export const inputStyle = (theme: TTheme) => css({
   }
 });
 
-const style = cx(
-  inputStyle(darkTheme),
-)
-
 export const buttonStyle = (theme: TTheme) => css({
   padding: '10px 15px',
   borderRadius: '10px',

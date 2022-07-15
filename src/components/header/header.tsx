@@ -1,5 +1,5 @@
 import React from 'react';
-import {ColorTheme, ColorThemeToggle} from "../color-theme-toggle/color-theme-toggle";
+import {ColorThemeToggle} from "../color-theme-toggle/color-theme-toggle";
 import {headerStyle, serviceNameStyle} from "./header.style";
 import {Typography} from "../typography";
 
@@ -12,7 +12,7 @@ export const Header = ({}: THeaderProps): JSX.Element => {
     <Typography type={'h2'} fontColorType={'main'}>
       devfinder
     </Typography>
-    <ColorThemeToggle currentColorTheme={ColorTheme.DARK}/>
+    <ColorThemeToggle/>
   </div>
  );
 };

@@ -1,5 +1,5 @@
 import {css, cx} from "@emotion/css";
-import {darkTheme, h2Style} from "../../styles";
+import {darkTheme, h2Style, TTheme} from "../../styles";
 
 export const headerStyle = css({
   display: "flex",
@@ -7,9 +7,9 @@ export const headerStyle = css({
   alignItems: "center"
 });
 
-export const serviceNameStyle = cx(
+export const serviceNameStyle = (theme: TTheme) => cx(
   h2Style,
   css({
-    color: darkTheme.mainFont,
+    color: theme.mainFont,
   })
 );

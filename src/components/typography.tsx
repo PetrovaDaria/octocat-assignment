@@ -11,6 +11,8 @@ import {
   activeFontColorStyle,
   TTheme, notAvailableFontColorStyle
 } from "../styles";
+import {useSelector} from "react-redux";
+import {selectColorTheme} from "../features/color-theme/color-theme.slice";
 
 type TTypographyType = 'h1' | 'h2' | 'h3' | 'h4' | 'p';
 type TFontColorType = 'main' | 'active' | 'not_available';
@@ -40,10 +42,12 @@ export const Typography = ({
   type,
   fontColorType
 }: TTypographyProps): JSX.Element => {
+  const {theme} = useSelector(selectColorTheme);
+
  return (
   <p className={cx(
     styles[type],
-    fontColorStyles[fontColorType](darkTheme),
+    fontColorStyles[fontColorType](theme),
     css({margin: 0})
   )}>{children}</p>
  );

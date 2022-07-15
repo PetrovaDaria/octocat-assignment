@@ -3,25 +3,26 @@ import IconMoon from '../../assets/icon-moon.svg?component';
 import IconSun from '../../assets/icon-sun.svg?component';
 import { colorThemeToggleStyle } from './color-theme-toggle.style';
 import {Typography} from "../typography";
-
-export enum ColorTheme {
-  LIGHT = 'light',
-  DARK = 'dark'
-}
+import {useDispatch, useSelector} from "react-redux";
+import {ColorTheme, selectColorTheme, switchTheme} from '../../features/color-theme/color-theme.slice';
+import {RootState} from "../../store";
 
 type TColorThemeToggleProps = {
-  currentColorTheme: ColorTheme;
+
 };
 
-export const ColorThemeToggle = ({currentColorTheme}: TColorThemeToggleProps): JSX.Element => {
+export const ColorThemeToggle = ({}: TColorThemeToggleProps): JSX.Element => {
+  const {name} = useSelector(selectColorTheme);
+  const dispatch = useDispatch();
+
  return (
-  <div className={colorThemeToggleStyle} onClick={() => {/*смена темы*/}}>
+  <div className={colorThemeToggleStyle} onClick={() => dispatch(switchTheme())}>
     <Typography type={'h4'} fontColorType={'main'}>
-      {currentColorTheme === ColorTheme.LIGHT && 'DARK'}
-      {currentColorTheme === ColorTheme.DARK && 'LIGHT'}
+      {name === ColorTheme.LIGHT && 'DARK'}
+      {name === ColorTheme.DARK && 'LIGHT'}
     </Typography>
-    {currentColorTheme === ColorTheme.LIGHT && <IconMoon/>}
-    {currentColorTheme === ColorTheme.DARK && <IconSun/>}
+    {name === ColorTheme.LIGHT && <IconMoon/>}
+    {name === ColorTheme.DARK && <IconSun/>}
   </div>
  );
 };
