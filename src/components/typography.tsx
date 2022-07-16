@@ -9,13 +9,13 @@ import {
   mainFontColorStyle,
   pStyle,
   activeFontColorStyle,
-  TTheme, notAvailableFontColorStyle
+  TTheme, notAvailableFontColorStyle, btnTextFontColorStyle
 } from "../styles";
 import {useSelector} from "react-redux";
 import {selectColorTheme} from "../features/color-theme/color-theme.slice";
 
 export type TTypographyType = 'h1' | 'h2' | 'h3' | 'h4' | 'p';
-export type TFontColorType = 'main' | 'active' | 'not_available';
+export type TFontColorType = 'main' | 'active' | 'not_available' | 'btn_text';
 
 const paragraphStyles: Record<TTypographyType, string> = {
   h1: h1Style,
@@ -28,7 +28,8 @@ const paragraphStyles: Record<TTypographyType, string> = {
 export const fontColorStyles: Record<TFontColorType, (theme: TTheme) => string> = {
   main: mainFontColorStyle,
   active: activeFontColorStyle,
-  not_available: notAvailableFontColorStyle
+  not_available: notAvailableFontColorStyle,
+  btn_text: btnTextFontColorStyle
 }
 
 export type TTypographyProps = {

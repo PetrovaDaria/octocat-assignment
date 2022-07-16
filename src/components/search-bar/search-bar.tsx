@@ -1,4 +1,4 @@
-import React, {useCallback, useState} from 'react';
+import React, {useCallback, useMemo, useState} from 'react';
 import IconSearch from '../../assets/icons/icon-search.svg?component';
 import {darkTheme} from "../../styles";
 import {buttonStyle, inputStyle, searchBarStyle} from "./search-bar.style";
@@ -18,7 +18,9 @@ export const SearchBar = ({}: TSearchBarProps): JSX.Element => {
   const {theme} = useSelector(selectColorTheme);
   const githubUserStatus = useSelector((state: RootState) => state.githubUser.status);
 
-  const isLoading = githubUserStatus === 'loading';
+  const isLoading = useMemo(() => {
+    return githubUserStatus === 'loading';
+  }, [githubUserStatus]);
 
   const onClickBtn = useCallback(() => {
     if (!isLoading) {
@@ -38,7 +40,7 @@ export const SearchBar = ({}: TSearchBarProps): JSX.Element => {
       onChange={e => setValue(e.target.value)}
     />
     <div className={buttonStyle(theme, isLoading)} onClick={onClickBtn}>
-      <Typography type={'h3'} fontColorType={'main'}>
+      <Typography type={'h3'} fontColorType={'btn_text'}>
         Search
       </Typography>
     </div>

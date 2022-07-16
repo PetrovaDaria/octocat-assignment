@@ -25,7 +25,7 @@ function App() {
 
   return (
     <Layout>
-      <CellMargin margin={'30px'}>
+      <CellMargin margin={'0px 30px'}>
         <Gaps gapHeight={'30px'}>
           <Header/>
           <SearchBar/>

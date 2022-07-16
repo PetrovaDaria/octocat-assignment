@@ -7,6 +7,7 @@ export const userInfoBlockStyle = (theme: TTheme) => cx(
     padding: '25px',
     display: 'grid',
     gridTemplateColumns: '3fr 7fr',
-    gap: '20px'
+    gap: '20px',
+    justifyItems: 'center'
   })
 );

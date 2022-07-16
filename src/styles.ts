@@ -4,28 +4,30 @@ import {CSSObject} from "@emotion/css/create-instance";
 type TCommonTheme = {
   disabledBtn: string;
   notAvailable: string;
+  btnText: string;
+  active: string;
+  hoveredBtn: string;
 }
 
 export type TTheme = {
   mainBackground: string;
   blockBackground: string;
   mainFont: string;
-  active: string;
-  hoveredBtn: string;
   icon: string;
 } & TCommonTheme;
 
 const notAvailableColor = '#697c9a'
 
 const commonTheme: TCommonTheme = {
-  disabledBtn: "#f6f8ff",
-  notAvailable: notAvailableColor
+  disabledBtn: "#66b3ff",
+  notAvailable: notAvailableColor,
+  btnText: "#ffffff",
+  active: "#0079ff",
+  hoveredBtn: "#66b3ff"
 }
 
 export const lightTheme: TTheme = {
   ...commonTheme,
-  active: "#0079ff",
-  hoveredBtn: "",
   blockBackground: "#fefefe",
   mainFont: "#2b3442",
   mainBackground: "#f6f8ff",
@@ -34,8 +36,6 @@ export const lightTheme: TTheme = {
 
 export const darkTheme: TTheme = {
   ...commonTheme,
-  active: "#0079ff",
-  hoveredBtn: "",
   blockBackground: "#1e2a47",
   mainFont: "#ffffff",
   mainBackground: "#141d2f",
@@ -88,6 +88,10 @@ export const activeFontColorStyle = (theme: TTheme) => css({
 
 export const notAvailableFontColorStyle = (theme: TTheme) => css({
   color: theme.notAvailable
+})
+
+export const btnTextFontColorStyle = (theme: TTheme) => css({
+  color: theme.btnText
 })
 
 export const baseBlockStyle = (theme: TTheme) => css({

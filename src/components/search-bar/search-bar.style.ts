@@ -30,8 +30,8 @@ export const buttonStyle = (theme: TTheme, disabled: boolean) => css({
   borderRadius: '10px',
   display: 'inline-block',
   background: disabled ? theme.disabledBtn : theme.active,
-  cursor: 'pointer',
+  cursor: disabled ? 'default' : 'pointer',
   ':hover': {
-    // filter: 'brightness(85%)'
+    background: theme.hoveredBtn
   }
 });
