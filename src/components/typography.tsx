@@ -14,10 +14,10 @@ import {
 import {useSelector} from "react-redux";
 import {selectColorTheme} from "../features/color-theme/color-theme.slice";
 
-type TTypographyType = 'h1' | 'h2' | 'h3' | 'h4' | 'p';
-type TFontColorType = 'main' | 'active' | 'not_available';
+export type TTypographyType = 'h1' | 'h2' | 'h3' | 'h4' | 'p';
+export type TFontColorType = 'main' | 'active' | 'not_available';
 
-const styles: Record<TTypographyType, string> = {
+const paragraphStyles: Record<TTypographyType, string> = {
   h1: h1Style,
   h2: h2Style,
   h3: h3Style,
@@ -25,17 +25,23 @@ const styles: Record<TTypographyType, string> = {
   p: pStyle
 }
 
-const fontColorStyles: Record<TFontColorType, (theme: TTheme) => string> = {
+export const fontColorStyles: Record<TFontColorType, (theme: TTheme) => string> = {
   main: mainFontColorStyle,
   active: activeFontColorStyle,
   not_available: notAvailableFontColorStyle
 }
 
-type TTypographyProps = {
+export type TTypographyProps = {
  children: React.ReactNode | JSX.Element;
  type: TTypographyType;
  fontColorType: TFontColorType;
 };
+
+export const typographyStyle = (theme: TTheme, type: TTypographyType, fontColorType: TFontColorType) => cx(
+  paragraphStyles[type],
+  fontColorStyles[fontColorType](theme),
+  css({margin: 0, whiteSpace: 'pre-wrap'})
+)
 
 export const Typography = ({
   children,
@@ -45,10 +51,8 @@ export const Typography = ({
   const {theme} = useSelector(selectColorTheme);
 
  return (
-  <p className={cx(
-    styles[type],
-    fontColorStyles[fontColorType](theme),
-    css({margin: 0})
-  )}>{children}</p>
+  <span className={typographyStyle(theme, type, fontColorType)}>
+    {children}
+  </span>
  );
 };

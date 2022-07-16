@@ -11,14 +11,17 @@ import {CellMargin} from "./components/cell-margin";
 import {useDispatch, useSelector} from "react-redux";
 import {RootState, TAppDispatch} from "./store";
 import {selectColorTheme} from "./features/color-theme/color-theme.slice";
-import {fetchGithubUser} from "./features/github-user/github-user.slice";
+import {fetchGithubUser, selectGithubUserState} from "./features/github-user/github-user.slice";
 
 function App() {
   const dispatch = useDispatch<TAppDispatch>();
+  const {status} = useSelector(selectGithubUserState);
 
   useEffect(() => {
-    dispatch(fetchGithubUser('octocat'))
-  }, []);
+    if (status === 'idle') {
+      dispatch(fetchGithubUser('octocat'))
+    }
+  }, [status]);
 
   return (
     <Layout>

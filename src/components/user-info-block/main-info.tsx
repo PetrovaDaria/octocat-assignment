@@ -5,6 +5,8 @@ import {CellMargin} from "../cell-margin";
 import {useSelector} from "react-redux";
 import {selectGithubUserState} from "../../features/github-user/github-user.slice";
 import {parseDate} from "../../dates";
+import {Link} from "../link";
+import {TextWithLinks} from "../text-with-links";
 
 type TUserInfoProps = {
 
@@ -22,14 +24,19 @@ export const MainInfo = ({}: TUserInfoProps): JSX.Element => {
         </Typography>
       </CellMargin>
       <CellMargin margin={'0 0 15px'}>
-        {/*TODO: make link*/}
-        <Typography type={'h3'} fontColorType={'active'}>
-          @{user?.login}
-        </Typography>
+        <Link
+          href={user?.html_url ? user.html_url : ''}
+          text={user?.login ? `@${user.login}` : ''}
+          type={'h3'}
+          fontColorType={'active'}
+        />
       </CellMargin>
-      <Typography type={'h3'} fontColorType={'main'}>
-        {user?.bio ? user.bio : 'This profile has no bio'}
-      </Typography>
+      {user?.bio ?
+        <TextWithLinks text={user.bio.replace(/\s\s+/, ' ')} type={'h3'} fontColorType={'main'}/> :
+        <Typography type={'h3'} fontColorType={'main'}>
+          This profile has no bio
+        </Typography>
+      }
     </div>
     <div>
       <Typography type={'h3'} fontColorType={'main'}>

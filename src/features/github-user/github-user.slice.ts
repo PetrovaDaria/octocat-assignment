@@ -1,5 +1,6 @@
 import {createAsyncThunk, createSlice, PayloadAction} from "@reduxjs/toolkit";
 import {RootState} from "../../store";
+import {act} from "react-dom/test-utils";
 
 type TGithubUser = {
   "login": string;
@@ -43,16 +44,14 @@ type TStatus = 'idle' | 'loading' | 'succeeded' | 'failed';
 type TGithubUserState = {
   user: TGithubUser | null;
   status: TStatus;
-  error: string | null;
 }
 
 const initialState: TGithubUserState = {
   user: null,
   status: 'idle',
-  error: null
 };
 
-export const fetchGithubUser = createAsyncThunk('githubUser/fetch', async (login: string): Promise<TGithubUser> => {
+export const fetchGithubUser = createAsyncThunk('githubUser/fetch', async (login: string, {rejectWithValue}) => {
   console.log('request ', login);
   const response = await fetch(
     `https://api.github.com/users/${login}`,
@@ -60,6 +59,10 @@ export const fetchGithubUser = createAsyncThunk('githubUser/fetch', async (login
           'Accept': 'application/vnd.github+json',
           'Authorization': ''
         }});
+  // either 200 or 404
+  if (response.status === 404) {
+    throw new Error(response.statusText);
+  }
   return response.json();
 });
 
@@ -72,15 +75,12 @@ export const githubUserSlice = createSlice({
       .addCase(fetchGithubUser.fulfilled, (state, action) => {
         state.user = action.payload;
         state.status = 'succeeded';
-        state.error = null;
       })
       .addCase(fetchGithubUser.pending, (state) => {
         state.status = 'loading';
-        state.error = null;
       })
       .addCase(fetchGithubUser.rejected, (state, action) => {
         state.status = 'failed';
-        state.error = action.error.message || '';
       })
   }
 });

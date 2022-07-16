@@ -1,7 +1,6 @@
 import React from 'react';
 import {Typography} from "../typography";
 import {accountInfoItemStyle, accountInfoStyle} from "./account-info.style";
-import {darkTheme} from "../../styles";
 import {useSelector} from "react-redux";
 import {selectColorTheme} from "../../features/color-theme/color-theme.slice";
 import {selectGithubUserState} from "../../features/github-user/github-user.slice";
@@ -30,9 +29,9 @@ export const AccountInfo = ({}: TAccountInfoProps): JSX.Element => {
 
  return (
   <div className={accountInfoStyle(theme)}>
-    <AccountInfoItem title={'Repos'} value={user?.public_repos? user.public_repos.toString() : '-'}/>
-   <AccountInfoItem title={'Followers'} value={user?.followers? user.followers.toString() : '-'}/>
-   <AccountInfoItem title={'Following'} value={user?.following? user.following.toString() : '-'}/>
+    <AccountInfoItem title={'Repos'} value={user?.public_repos? user.public_repos.toString() : '0'}/>
+   <AccountInfoItem title={'Followers'} value={user?.followers? user.followers.toString() : '0'}/>
+   <AccountInfoItem title={'Following'} value={user?.following? user.following.toString() : '0'}/>
   </div>
  );
 };

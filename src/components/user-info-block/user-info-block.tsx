@@ -16,7 +16,23 @@ type TUserInfoProps = {
 };
 export const UserInfoBlock = ({}: TUserInfoProps): JSX.Element => {
   const {theme} = useSelector(selectColorTheme);
-  const {user, status, error} = useSelector((state: RootState) => state.githubUser)
+  const {user, status} = useSelector((state: RootState) => state.githubUser)
+
+  if (status === 'loading') {
+    return (
+      <Typography type={'h3'} fontColorType={'main'}>
+        Loading...
+      </Typography>
+    );
+  }
+
+  if (status === 'failed') {
+    return (
+      <Typography type={'h2'} fontColorType={'main'}>
+        User was not found
+      </Typography>
+    );
+  }
 
  return (
   <div className={userInfoBlockStyle(theme)}>

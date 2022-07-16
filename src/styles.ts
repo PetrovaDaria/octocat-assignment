@@ -1,49 +1,45 @@
-import {css} from "@emotion/css";
-import {CSSInterpolation, CSSObject, Emotion} from "@emotion/css/create-instance";
+import {css, cx} from "@emotion/css";
+import {CSSObject} from "@emotion/css/create-instance";
 
 type TCommonTheme = {
   disabledBtn: string;
+  notAvailable: string;
 }
 
 export type TTheme = {
   mainBackground: string;
   blockBackground: string;
   mainFont: string;
-  unavailableFont: string;
   active: string;
   hoveredBtn: string;
   icon: string;
-  notAvailable: string;
 } & TCommonTheme;
 
-const notAvailableColor = '#f6f8ff';
+const notAvailableColor = '#697c9a'
 
 const commonTheme: TCommonTheme = {
-  disabledBtn: "#f6f8ff"
+  disabledBtn: "#f6f8ff",
+  notAvailable: notAvailableColor
 }
 
 export const lightTheme: TTheme = {
   ...commonTheme,
   active: "#0079ff",
   hoveredBtn: "",
-  unavailableFont: "",
   blockBackground: "#fefefe",
   mainFont: "#2b3442",
   mainBackground: "#f6f8ff",
-  icon: "#4b6a9b",
-  notAvailable: notAvailableColor
+  icon: "#4b6a9b"
 };
 
 export const darkTheme: TTheme = {
   ...commonTheme,
   active: "#0079ff",
   hoveredBtn: "",
-  unavailableFont: "",
   blockBackground: "#1e2a47",
   mainFont: "#ffffff",
   mainBackground: "#141d2f",
-  icon: '#ffffff',
-  notAvailable: notAvailableColor
+  icon: '#ffffff'
 };
 
 export const h1Style = css({
@@ -109,7 +105,13 @@ export const notAvailableIconStyle = css({
   path: {
     fill: notAvailableColor
   }
-})
+});
+
+export const iconStyle = (theme: TTheme, isAvailable: boolean) => cx(
+  baseIconStyle(theme),
+  !isAvailable && notAvailableIconStyle
+)
+
 
 
 

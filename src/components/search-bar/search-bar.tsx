@@ -22,6 +22,7 @@ export const SearchBar = ({}: TSearchBarProps): JSX.Element => {
 
   const onClickBtn = useCallback(() => {
     if (!isLoading) {
+      console.log('req in search');
       dispatch(fetchGithubUser(value))
     }
   }, [value, isLoading]);
