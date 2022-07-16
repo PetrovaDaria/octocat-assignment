@@ -25,10 +25,13 @@ export const inputStyle = (theme: TTheme) => css({
   }
 });
 
-export const buttonStyle = (theme: TTheme) => css({
+export const buttonStyle = (theme: TTheme, disabled: boolean) => css({
   padding: '10px 15px',
   borderRadius: '10px',
   display: 'inline-block',
-  background: theme.active,
-  cursor: 'pointer'
+  background: disabled ? theme.disabledBtn : theme.active,
+  cursor: 'pointer',
+  ':hover': {
+    // filter: 'brightness(85%)'
+  }
 });

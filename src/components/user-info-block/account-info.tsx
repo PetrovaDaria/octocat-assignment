@@ -4,6 +4,7 @@ import {accountInfoItemStyle, accountInfoStyle} from "./account-info.style";
 import {darkTheme} from "../../styles";
 import {useSelector} from "react-redux";
 import {selectColorTheme} from "../../features/color-theme/color-theme.slice";
+import {selectGithubUserState} from "../../features/github-user/github-user.slice";
 
 type TAccountInfoItemProps = {
  title: string;
@@ -25,12 +26,13 @@ type TAccountInfoProps = {
 
 export const AccountInfo = ({}: TAccountInfoProps): JSX.Element => {
   const {theme} = useSelector(selectColorTheme);
+  const {user} = useSelector(selectGithubUserState);
 
  return (
   <div className={accountInfoStyle(theme)}>
-    <AccountInfoItem title={'Repos'} value={'8'}/>
-   <AccountInfoItem title={'Followers'} value={'3938'}/>
-   <AccountInfoItem title={'Following'} value={'9'}/>
+    <AccountInfoItem title={'Repos'} value={user?.public_repos? user.public_repos.toString() : '-'}/>
+   <AccountInfoItem title={'Followers'} value={user?.followers? user.followers.toString() : '-'}/>
+   <AccountInfoItem title={'Following'} value={user?.following? user.following.toString() : '-'}/>
   </div>
  );
 };

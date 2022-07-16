@@ -8,12 +8,15 @@ import { Gaps } from '../gaps';
 import {LinksInfo} from "./links-info";
 import {useSelector} from "react-redux";
 import {selectColorTheme} from "../../features/color-theme/color-theme.slice";
+import {RootState} from "../../store";
+import {Typography} from "../typography";
 
 type TUserInfoProps = {
 
 };
 export const UserInfoBlock = ({}: TUserInfoProps): JSX.Element => {
   const {theme} = useSelector(selectColorTheme);
+  const {user, status, error} = useSelector((state: RootState) => state.githubUser)
 
  return (
   <div className={userInfoBlockStyle(theme)}>

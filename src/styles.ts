@@ -1,6 +1,10 @@
 import {css} from "@emotion/css";
 import {CSSInterpolation, CSSObject, Emotion} from "@emotion/css/create-instance";
 
+type TCommonTheme = {
+  disabledBtn: string;
+}
+
 export type TTheme = {
   mainBackground: string;
   blockBackground: string;
@@ -10,11 +14,16 @@ export type TTheme = {
   hoveredBtn: string;
   icon: string;
   notAvailable: string;
-}
+} & TCommonTheme;
 
 const notAvailableColor = '#f6f8ff';
 
+const commonTheme: TCommonTheme = {
+  disabledBtn: "#f6f8ff"
+}
+
 export const lightTheme: TTheme = {
+  ...commonTheme,
   active: "#0079ff",
   hoveredBtn: "",
   unavailableFont: "",
@@ -26,6 +35,7 @@ export const lightTheme: TTheme = {
 };
 
 export const darkTheme: TTheme = {
+  ...commonTheme,
   active: "#0079ff",
   hoveredBtn: "",
   unavailableFont: "",
