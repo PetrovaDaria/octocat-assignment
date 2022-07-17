@@ -5,12 +5,12 @@ import IconTwitter from '../../assets/icons/icon-twitter.svg?component';
 import IconWebsite from '../../assets/icons/icon-website.svg?component';
 import IconCompany from '../../assets/icons/icon-company.svg?component';
 import {TFontColorType, Typography} from "../typography";
-import {baseIconStyle, iconStyle} from "../../styles";
+import {iconStyle} from "../../styles";
 import {Link} from "../link";
-import {useSelector} from "react-redux";
 import {selectGithubUserState} from "../../features/github-user/github-user.slice";
 import {selectColorTheme} from "../../features/color-theme/color-theme.slice";
 import {TextWithLinks} from "../text-with-links";
+import {useAppSelector} from "../../store";
 
 type TLinkInfoItemProps = {
   icon: React.ReactNode;
@@ -59,8 +59,8 @@ type TLinksInfoProps = {
 };
 
 export const LinksInfo = ({}: TLinksInfoProps): JSX.Element => {
-  const {theme} = useSelector(selectColorTheme);
-  const {user} = useSelector(selectGithubUserState);
+  const {theme} = useAppSelector(selectColorTheme);
+  const {user} = useAppSelector(selectGithubUserState);
 
   const twitterText = user?.twitter_username && `@${user.twitter_username}`;
   const twitterLink = user?.twitter_username && `https://twitter.com/${user.twitter_username}`;

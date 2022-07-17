@@ -1,9 +1,9 @@
 import React from 'react';
 import {Typography} from "../typography";
 import {accountInfoItemStyle, accountInfoStyle} from "./account-info.style";
-import {useSelector} from "react-redux";
 import {selectColorTheme} from "../../features/color-theme/color-theme.slice";
 import {selectGithubUserState} from "../../features/github-user/github-user.slice";
+import {useAppSelector} from "../../store";
 
 type TAccountInfoItemProps = {
  title: string;
@@ -24,8 +24,8 @@ type TAccountInfoProps = {
 };
 
 export const AccountInfo = ({}: TAccountInfoProps): JSX.Element => {
-  const {theme} = useSelector(selectColorTheme);
-  const {user} = useSelector(selectGithubUserState);
+  const {theme} = useAppSelector(selectColorTheme);
+  const {user} = useAppSelector(selectGithubUserState);
 
  return (
   <div className={accountInfoStyle(theme)}>

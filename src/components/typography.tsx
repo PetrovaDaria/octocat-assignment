@@ -1,7 +1,6 @@
 import React from 'react';
 import {css, cx} from '@emotion/css';
 import {
-  darkTheme,
   h1Style,
   h2Style,
   h3Style,
@@ -11,8 +10,8 @@ import {
   activeFontColorStyle,
   TTheme, notAvailableFontColorStyle, btnTextFontColorStyle
 } from "../styles";
-import {useSelector} from "react-redux";
 import {selectColorTheme} from "../features/color-theme/color-theme.slice";
+import {useAppSelector} from "../store";
 
 export type TTypographyType = 'h1' | 'h2' | 'h3' | 'h4' | 'p';
 export type TFontColorType = 'main' | 'active' | 'not_available' | 'btn_text';
@@ -49,7 +48,7 @@ export const Typography = ({
   type,
   fontColorType
 }: TTypographyProps): JSX.Element => {
-  const {theme} = useSelector(selectColorTheme);
+  const {theme} = useAppSelector(selectColorTheme);
 
  return (
   <span className={typographyStyle(theme, type, fontColorType)}>

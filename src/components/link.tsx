@@ -1,9 +1,9 @@
 import React from 'react';
-import {fontColorStyles, TFontColorType, TTypographyProps, TTypographyType, Typography, typographyStyle} from "./typography";
+import {TFontColorType, TTypographyProps, TTypographyType, typographyStyle} from "./typography";
 import {css, cx} from "@emotion/css";
 import {TTheme} from "../styles";
-import {useSelector} from "react-redux";
 import {selectColorTheme} from "../features/color-theme/color-theme.slice";
+import {useAppSelector} from "../store";
 
 type TLinkProps = {
   href: string;
@@ -19,18 +19,9 @@ const linkStyle = (theme: TTheme, type: TTypographyType, fontColorType: TFontCol
     }
   })
 )
-// css({
-//   textDecoration: 'none',
-//   cursor: 'pointer',
-//   color: 'inherit',
-//   textDecorationColor: 'inherit',
-//   ':hover': {
-//     textDecoration: 'underline'
-//   }
-// });
 
 export const Link = ({type, fontColorType, href, text}: TLinkProps): JSX.Element => {
-  const {theme} = useSelector(selectColorTheme);
+  const {theme} = useAppSelector(selectColorTheme);
 
  return (
    <a className={linkStyle(theme, type, fontColorType)} href={href} target={'_blank'}>

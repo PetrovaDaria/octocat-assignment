@@ -52,7 +52,6 @@ const initialState: TGithubUserState = {
 };
 
 export const fetchGithubUser = createAsyncThunk('githubUser/fetch', async (login: string, {rejectWithValue}) => {
-  console.log('request ', login);
   const response = await fetch(
     `https://api.github.com/users/${login}`,
     {headers: {

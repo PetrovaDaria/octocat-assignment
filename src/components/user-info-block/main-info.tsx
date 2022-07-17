@@ -2,18 +2,18 @@ import React from 'react';
 import {mainInfoStyle} from "./main-info.style";
 import {Typography} from "../typography";
 import {CellMargin} from "../cell-margin";
-import {useSelector} from "react-redux";
 import {selectGithubUserState} from "../../features/github-user/github-user.slice";
 import {parseDate} from "../../dates";
 import {Link} from "../link";
 import {TextWithLinks} from "../text-with-links";
+import {useAppSelector} from "../../store";
 
 type TUserInfoProps = {
 
 };
 
 export const MainInfo = ({}: TUserInfoProps): JSX.Element => {
-  const {user} = useSelector(selectGithubUserState);
+  const {user} = useAppSelector(selectGithubUserState);
 
  return (
   <div className={mainInfoStyle}>
