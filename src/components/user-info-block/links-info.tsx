@@ -1,9 +1,9 @@
 import React, {useMemo} from 'react';
 import {linkInfoItemStyle, linksInfoStyle} from "./links-info.style";
-import IconLocation from '../../assets/icons/icon-location.svg?component';
-import IconTwitter from '../../assets/icons/icon-twitter.svg?component';
-import IconWebsite from '../../assets/icons/icon-website.svg?component';
-import IconCompany from '../../assets/icons/icon-company.svg?component';
+// import IconLocation from '../../assets/icons/icon-location.svg?component';
+// import IconTwitter from '../../assets/icons/icon-twitter.svg?component';
+// import IconWebsite from '../../assets/icons/icon-website.svg?component';
+// import IconCompany from '../../assets/icons/icon-company.svg?component';
 import {TFontColorType, Typography} from "../typography";
 import {iconStyle} from "../../styles";
 import {Link} from "../link";
@@ -66,14 +66,24 @@ export const LinksInfo = ({}: TLinksInfoProps): JSX.Element => {
   const twitterLink = user?.twitter_username && `https://twitter.com/${user.twitter_username}`;
 
   const iconCompany = useMemo(() => {
-    return <IconCompany className={iconStyle(theme, Boolean(user?.company))}/>;
+    // return <IconCompany className={iconStyle(theme, Boolean(user?.company))}/>;
+    return <></>
   }, [theme, user]);
 
  return (
   <div className={linksInfoStyle}>
-    <LinkInfoItem icon={<IconLocation className={iconStyle(theme, Boolean(user?.location))}/>} text={user?.location}/>
-    <LinkInfoItem icon={<IconTwitter className={iconStyle(theme, Boolean(twitterText))}/>} text={twitterText} link={twitterLink}/>
-    <LinkInfoItem icon={<IconWebsite className={iconStyle(theme, Boolean(user?.blog))}/>} text={user?.blog} link={user?.blog}/>
+    <LinkInfoItem
+      // icon={<IconLocation className={iconStyle(theme, Boolean(user?.location))}/>}
+      icon={<></>}
+      text={user?.location}/>
+    <LinkInfoItem
+      // icon={<IconTwitter className={iconStyle(theme, Boolean(twitterText))}/>}
+      icon={<></>}
+      text={twitterText} link={twitterLink}/>
+    <LinkInfoItem
+      // icon={<IconWebsite className={iconStyle(theme, Boolean(user?.blog))}/>}
+      icon={<></>}
+      text={user?.blog} link={user?.blog}/>
     {user?.company ?
       <LinkInfoItem2 icon={iconCompany} text={user?.company}/> :
       <LinkInfoItem icon={iconCompany}/>

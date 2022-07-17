@@ -10,7 +10,7 @@ import {CellMargin} from "./components/cell-margin";
 import {useAppDispatch, useAppSelector} from "./store";
 import {fetchGithubUser, selectGithubUserState} from "./features/github-user/github-user.slice";
 
-function App() {
+export function App() {
   const dispatch = useAppDispatch();
   const {status} = useAppSelector(selectGithubUserState);
 
@@ -32,5 +32,3 @@ function App() {
     </Layout>
   )
 }
-
-export default App

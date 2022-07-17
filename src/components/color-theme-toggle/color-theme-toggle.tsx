@@ -1,6 +1,6 @@
 import React from 'react';
-import IconMoon from '../../assets/icon-moon.svg?component';
-import IconSun from '../../assets/icon-sun.svg?component';
+// import IconMoon from '../../assets/icon-moon.svg?component';
+// import IconSun from '../../assets/icon-sun.svg?component';
 import { colorThemeToggleStyle } from './color-theme-toggle.style';
 import {Typography} from "../typography";
 import {ColorTheme, selectColorTheme, switchTheme} from '../../features/color-theme/color-theme.slice';
@@ -20,8 +20,8 @@ export const ColorThemeToggle = ({}: TColorThemeToggleProps): JSX.Element => {
       {name === ColorTheme.LIGHT && 'DARK'}
       {name === ColorTheme.DARK && 'LIGHT'}
     </Typography>
-    {name === ColorTheme.LIGHT && <IconMoon/>}
-    {name === ColorTheme.DARK && <IconSun/>}
+    {/*{name === ColorTheme.LIGHT && <IconMoon/>}*/}
+    {/*{name === ColorTheme.DARK && <IconSun/>}*/}
   </div>
  );
 };

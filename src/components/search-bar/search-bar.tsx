@@ -1,5 +1,5 @@
 import React, {useCallback, useMemo, useState} from 'react';
-import IconSearch from '../../assets/icons/icon-search.svg?component';
+// import IconSearch from '../../assets/icons/icon-search.svg?component';
 import {buttonStyle, inputStyle, searchBarStyle} from "./search-bar.style";
 import {Typography} from "../typography";
 import {selectColorTheme} from "../../features/color-theme/color-theme.slice";
@@ -28,7 +28,7 @@ export const SearchBar = ({}: TSearchBarProps): JSX.Element => {
 
  return (
   <div className={searchBarStyle(theme)}>
-    <IconSearch/>
+    {/*<IconSearch/>*/}
     <input
       type={'text'}
       placeholder={'Search GitHub username...'}

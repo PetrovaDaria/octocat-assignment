@@ -10,10 +10,10 @@ export const Gaps = ({children, gapHeight}: TGapsProps): JSX.Element => {
   <div>
     {children.map((child, i) => (
       // TODO: refactor key
-      <React.Fragment key={i}>
+      <>
         {child}
         {i !== children.length - 1 && <div style={{height: gapHeight}}/>}
-      </React.Fragment>
+      </>
     ))}
   </div>
  );
