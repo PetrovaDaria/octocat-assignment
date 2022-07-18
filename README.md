@@ -12,10 +12,17 @@ the best user experience.
 - TypeScript
 - Redux-toolkit - state management
 - Emotion - for components styling
+- Jest, React Testing Library - for testing
+- miragejs - for mocking API in tests
 
 
 ### How to run
 ```javascript
 yarn install // install dependencues
-yarn start // start app locally 
+yarn dev // start app locally 
+```
+
+### How to test
+```javascript
+yarn test // start tests
 ```
