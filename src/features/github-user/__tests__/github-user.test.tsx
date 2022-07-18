@@ -31,8 +31,8 @@ const normalResponse: TGithubUser = {
   "location": "San Francisco",
   "email": null,
   "hireable": null,
-  "bio": null,
-  "twitter_username": null,
+  "bio": "This is my bio",
+  "twitter_username": "kamyshev_dev",
   "public_repos": 8,
   "public_gists": 8,
   "followers": 6420,
@@ -54,6 +54,16 @@ const searchInputPlaceholder = 'Search GitHub username...';
 const loadingText = 'Loading...';
 const searchBtnAriaLabel = 'search-btn';
 const githubUserNameAriaLabel = 'github-user-name';
+const githubUserLoginAriaLabel = 'github-user-login';
+const githubUserBioAriaLabel = 'github-user-bio';
+const githubUserJoinedDateAriaLabel = 'github-user-joined-date';
+const reposValueAriaLabel = 'repos-value';
+const followersValueAriaLabel = 'followers-value';
+const followingValueAriaLabel = 'following-value';
+const locationLinkAriaLabel = 'location-link';
+const twitterLinkAriaLabel = 'twitter-link';
+const companyLinkAriaLabel = 'company-link';
+const blogLinkAriaLabel = 'blog-link';
 
 test('App correctly renders initial Octocat response', async () => {
   renderWithProviders(<App/>);
@@ -67,7 +77,37 @@ test('App correctly renders initial Octocat response', async () => {
   await waitForElementToBeRemoved(loadingComponent);
 
   const userNameComponent = screen.getByLabelText(githubUserNameAriaLabel);
+  const userLoginComponent = screen.getByLabelText(githubUserLoginAriaLabel);
+  const userBioComponent = screen.getByLabelText(githubUserBioAriaLabel);
+  const userJoinedDateComponent = screen.getByLabelText(githubUserJoinedDateAriaLabel);
+  const reposValueComponent = screen.getByLabelText(reposValueAriaLabel);
+  const followersValueComponent = screen.getByLabelText(followersValueAriaLabel);
+  const followingValueComponent = screen.getByLabelText(followingValueAriaLabel);
+  const locationLinkComponent = screen.getByLabelText(locationLinkAriaLabel);
+  const twitterLinkComponent = screen.getByLabelText(twitterLinkAriaLabel);
+  const blogLinkComponent = screen.getByLabelText(blogLinkAriaLabel);
+  const companyLinkComponent = screen.getByLabelText(companyLinkAriaLabel);
+  // const companyLinkComponentChildren = screen.getByLabelText(companyLinkAriaLabel).children[1].children;
+
+  // console.log('link children ', companyLinkComponentChildren);
 
   expect(userNameComponent).toContainHTML('The Octocat');
+  expect(userLoginComponent).toContainHTML('@octocat');
+  expect(userLoginComponent).toHaveAttribute('href', 'https://github.com/octocat');
+  expect(userBioComponent).toContainHTML('This is my bio');
+  expect(userJoinedDateComponent).toContainHTML('Joined 25 Jan 2011');
+  expect(reposValueComponent).toContainHTML('8');
+  expect(followersValueComponent).toContainHTML('6420');
+  expect(followingValueComponent).toContainHTML('9');
+  expect(locationLinkComponent).toContainHTML('San Francisco');
+  expect(twitterLinkComponent).toContainHTML('@kamyshev_dev');
+  expect(twitterLinkComponent).toHaveAttribute('href', 'https://twitter.com/kamyshev_dev')
+  expect(blogLinkComponent).toContainHTML('https://github.blog');
+  expect(blogLinkComponent).toHaveAttribute('href', 'https://github.blog');
+  expect(companyLinkComponent).toContainHTML('@github');
+  // expect(companyLinkComponentChildren).toHaveAttribute('href', 'https://github.com/github');
+
   console.log(screen.logTestingPlaygroundURL());
 });
+
+// TODO: test for negative cases, when everything is missed

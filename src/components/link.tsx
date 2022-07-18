@@ -8,6 +8,7 @@ import {useAppSelector} from "../store";
 type TLinkProps = {
   href: string;
   text: string;
+  ariaLabel?: string;
 } & Omit<TTypographyProps, 'children'>;
 
 const linkStyle = (theme: TTheme, type: TTypographyType, fontColorType: TFontColorType) => cx(
@@ -20,11 +21,11 @@ const linkStyle = (theme: TTheme, type: TTypographyType, fontColorType: TFontCol
   })
 )
 
-export const Link = ({type, fontColorType, href, text}: TLinkProps): JSX.Element => {
+export const Link = ({type, fontColorType, href, text, ariaLabel}: TLinkProps): JSX.Element => {
   const {theme} = useAppSelector(selectColorTheme);
 
  return (
-   <a className={linkStyle(theme, type, fontColorType)} href={href} target={'_blank'}>
+   <a className={linkStyle(theme, type, fontColorType)} href={href} target={'_blank'} aria-label={ariaLabel}>
      {text}
    </a>
  );

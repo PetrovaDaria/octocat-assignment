@@ -29,17 +29,23 @@ export const MainInfo = ({}: TUserInfoProps): JSX.Element => {
           text={user?.login ? `@${user.login}` : ''}
           type={'h3'}
           fontColorType={'active'}
+          ariaLabel={'github-user-login'}
         />
       </CellMargin>
       {user?.bio ?
-        <TextWithLinks text={user.bio.replace(/\s\s+/, ' ')} type={'h3'} fontColorType={'main'}/> :
-        <Typography type={'h3'} fontColorType={'main'}>
+        <TextWithLinks
+          text={user.bio.replace(/\s\s+/, ' ')}
+          type={'h3'}
+          fontColorType={'main'}
+          ariaLabel={'github-user-bio'}
+        /> :
+        <Typography type={'h3'} fontColorType={'main'} ariaLabel={'github-user-bio'}>
           This profile has no bio
         </Typography>
       }
     </div>
     <div>
-      <Typography type={'h3'} fontColorType={'main'}>
+      <Typography type={'h3'} fontColorType={'main'} ariaLabel={'github-user-joined-date'}>
         {user?.created_at ? `Joined ${parseDate(user?.created_at)}` : ''}
       </Typography>
     </div>
