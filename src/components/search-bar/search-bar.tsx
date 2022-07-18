@@ -1,5 +1,6 @@
 import React, {useCallback, useMemo, useState} from 'react';
 // import IconSearch from '../../assets/icons/icon-search.svg?component';
+import IconSearch from '../../assets/icons/icon-search.svg';
 import {buttonStyle, inputStyle, searchBarStyle} from "./search-bar.style";
 import {Typography} from "../typography";
 import {selectColorTheme} from "../../features/color-theme/color-theme.slice";
@@ -29,6 +30,7 @@ export const SearchBar = ({}: TSearchBarProps): JSX.Element => {
  return (
   <div className={searchBarStyle(theme)}>
     {/*<IconSearch/>*/}
+    <img src={IconSearch}/>
     <input
       type={'text'}
       placeholder={'Search GitHub username...'}
@@ -36,7 +38,7 @@ export const SearchBar = ({}: TSearchBarProps): JSX.Element => {
       value={value}
       onChange={e => setValue(e.target.value)}
     />
-    <div className={buttonStyle(theme, isLoading)} onClick={onClickBtn}>
+    <div className={buttonStyle(theme, isLoading)} onClick={onClickBtn} aria-label={'search-btn'}>
       <Typography type={'h3'} fontColorType={'btn_text'}>
         Search
       </Typography>

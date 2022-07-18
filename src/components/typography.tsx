@@ -35,6 +35,7 @@ export type TTypographyProps = {
  children: React.ReactNode | JSX.Element;
  type: TTypographyType;
  fontColorType: TFontColorType;
+ ariaLabel?: string;
 };
 
 export const typographyStyle = (theme: TTheme, type: TTypographyType, fontColorType: TFontColorType) => cx(
@@ -46,12 +47,13 @@ export const typographyStyle = (theme: TTheme, type: TTypographyType, fontColorT
 export const Typography = ({
   children,
   type,
-  fontColorType
+  fontColorType,
+  ariaLabel
 }: TTypographyProps): JSX.Element => {
   const {theme} = useAppSelector(selectColorTheme);
 
  return (
-  <span className={typographyStyle(theme, type, fontColorType)}>
+  <span className={typographyStyle(theme, type, fontColorType)} aria-label={ariaLabel}>
     {children}
   </span>
  );

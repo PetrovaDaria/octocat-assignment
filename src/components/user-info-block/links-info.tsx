@@ -4,6 +4,10 @@ import {linkInfoItemStyle, linksInfoStyle} from "./links-info.style";
 // import IconTwitter from '../../assets/icons/icon-twitter.svg?component';
 // import IconWebsite from '../../assets/icons/icon-website.svg?component';
 // import IconCompany from '../../assets/icons/icon-company.svg?component';
+import IconLocation from '../../assets/icons/icon-location.svg';
+import IconTwitter from '../../assets/icons/icon-twitter.svg';
+import IconWebsite from '../../assets/icons/icon-website.svg';
+import IconCompany from '../../assets/icons/icon-company.svg';
 import {TFontColorType, Typography} from "../typography";
 import {iconStyle} from "../../styles";
 import {Link} from "../link";
@@ -14,8 +18,8 @@ import {useAppSelector} from "../../store";
 
 type TLinkInfoItemProps = {
   icon: React.ReactNode;
-  text?: string;
-  link?: string;
+  text?: string | null;
+  link?: string | null;
 }
 
 export const LinkInfoItem = ({icon, text, link}: TLinkInfoItemProps): JSX.Element => {
@@ -67,22 +71,22 @@ export const LinksInfo = ({}: TLinksInfoProps): JSX.Element => {
 
   const iconCompany = useMemo(() => {
     // return <IconCompany className={iconStyle(theme, Boolean(user?.company))}/>;
-    return <></>
+    return <img src={IconCompany}/>
   }, [theme, user]);
 
  return (
   <div className={linksInfoStyle}>
     <LinkInfoItem
       // icon={<IconLocation className={iconStyle(theme, Boolean(user?.location))}/>}
-      icon={<></>}
+      icon={<img src={IconLocation}/>}
       text={user?.location}/>
     <LinkInfoItem
       // icon={<IconTwitter className={iconStyle(theme, Boolean(twitterText))}/>}
-      icon={<></>}
+      icon={<img src={IconTwitter}/>}
       text={twitterText} link={twitterLink}/>
     <LinkInfoItem
       // icon={<IconWebsite className={iconStyle(theme, Boolean(user?.blog))}/>}
-      icon={<></>}
+      icon={<img src={IconWebsite}/>}
       text={user?.blog} link={user?.blog}/>
     {user?.company ?
       <LinkInfoItem2 icon={iconCompany} text={user?.company}/> :

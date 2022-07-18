@@ -19,7 +19,7 @@ export const MainInfo = ({}: TUserInfoProps): JSX.Element => {
   <div className={mainInfoStyle}>
     <div>
       <CellMargin margin={'0 0 5px'}>
-        <Typography type={'h1'} fontColorType={'main'}>
+        <Typography type={'h1'} fontColorType={'main'} ariaLabel={'github-user-name'}>
           {user?.name ? user.name : user?.login}
         </Typography>
       </CellMargin>
