@@ -1,6 +1,5 @@
-import {createAsyncThunk, createSlice, PayloadAction} from "@reduxjs/toolkit";
+import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 import {RootState} from "../../store";
-import {act} from "react-dom/test-utils";
 
 export type TGithubUser = {
   "login": string;
@@ -37,8 +36,6 @@ export type TGithubUser = {
   "updated_at": string
 }
 
-// type TGithubUser = {name: string};
-
 type TStatus = 'idle' | 'loading' | 'succeeded' | 'failed';
 
 type TGithubUserState = {
@@ -51,15 +48,6 @@ const initialState: TGithubUserState = {
   status: 'idle',
 };
 
-export const githubUserRequest = async (login: string) => {
-  return await fetch(
-    `https://api.github.com/users/${login}`,
-    {headers: {
-        'Accept': 'application/vnd.github+json',
-        'Authorization': ''
-      }});
-}
-
 export const fetchGithubUser = createAsyncThunk('githubUser/fetch', async (login: string, {rejectWithValue}) => {
   const response = await fetch(
     `https://api.github.com/users/${login}`,
@@ -68,7 +56,6 @@ export const fetchGithubUser = createAsyncThunk('githubUser/fetch', async (login
           'Authorization': ''
         }});
   // either 200 or 404
-  console.log('response ', response);
   if (response.status === 404) {
     throw new Error(response.statusText);
   }
