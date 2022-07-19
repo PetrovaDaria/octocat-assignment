@@ -9,9 +9,10 @@ type TLinkInfoItemPart = {
 
 type TTextWithLinksProps = {
   text: string;
+  ariaLabel?: string;
 } & Omit<TTypographyProps, 'children'>;
 
-export const TextWithLinks = ({text, type, fontColorType}: TTextWithLinksProps): JSX.Element => {
+export const TextWithLinks = ({text, type, fontColorType, ariaLabel}: TTextWithLinksProps): JSX.Element => {
   const elements = useMemo((): TLinkInfoItemPart[] => {
     const arr = Array.from(text.matchAll(/@.+?(?= |$)|.+?(?=@|$)/gm));
     return arr.map((part) => {
@@ -24,7 +25,7 @@ export const TextWithLinks = ({text, type, fontColorType}: TTextWithLinksProps):
   }, [text]);
 
  return (
-   <p style={{margin: '0px'}}>
+   <p style={{margin: '0px'}} aria-label={ariaLabel}>
      {elements.map((el) => {
        const key = [el.text, el.link].join('-');
        return el.link ?

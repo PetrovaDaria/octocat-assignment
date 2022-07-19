@@ -1,7 +1,6 @@
 import React from 'react';
 import {css, cx} from '@emotion/css';
 import {
-  darkTheme,
   h1Style,
   h2Style,
   h3Style,
@@ -11,8 +10,8 @@ import {
   activeFontColorStyle,
   TTheme, notAvailableFontColorStyle, btnTextFontColorStyle
 } from "../styles";
-import {useSelector} from "react-redux";
 import {selectColorTheme} from "../features/color-theme/color-theme.slice";
+import {useAppSelector} from "../store";
 
 export type TTypographyType = 'h1' | 'h2' | 'h3' | 'h4' | 'p';
 export type TFontColorType = 'main' | 'active' | 'not_available' | 'btn_text';
@@ -36,6 +35,7 @@ export type TTypographyProps = {
  children: React.ReactNode | JSX.Element;
  type: TTypographyType;
  fontColorType: TFontColorType;
+ ariaLabel?: string;
 };
 
 export const typographyStyle = (theme: TTheme, type: TTypographyType, fontColorType: TFontColorType) => cx(
@@ -47,12 +47,13 @@ export const typographyStyle = (theme: TTheme, type: TTypographyType, fontColorT
 export const Typography = ({
   children,
   type,
-  fontColorType
+  fontColorType,
+  ariaLabel
 }: TTypographyProps): JSX.Element => {
-  const {theme} = useSelector(selectColorTheme);
+  const {theme} = useAppSelector(selectColorTheme);
 
  return (
-  <span className={typographyStyle(theme, type, fontColorType)}>
+  <span className={typographyStyle(theme, type, fontColorType)} aria-label={ariaLabel}>
     {children}
   </span>
  );

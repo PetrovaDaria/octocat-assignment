@@ -1,8 +1,7 @@
-import {createAsyncThunk, createSlice, PayloadAction} from "@reduxjs/toolkit";
+import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 import {RootState} from "../../store";
-import {act} from "react-dom/test-utils";
 
-type TGithubUser = {
+export type TGithubUser = {
   "login": string;
   "id": number,
   "node_id": string,
@@ -21,14 +20,14 @@ type TGithubUser = {
   "received_events_url": string,
   "type": string,
   "site_admin": false,
-  "name": string,
-  "company": string,
-  "blog": string,
-  "location": string,
-  "email": string,
-  "hireable": boolean,
-  "bio": string,
-  "twitter_username": string,
+  "name": string | null,
+  "company": string | null,
+  "blog": string | null,
+  "location": string | null,
+  "email": string | null,
+  "hireable": boolean | null,
+  "bio": string | null,
+  "twitter_username": string | null,
   "public_repos": number,
   "public_gists": number,
   "followers": number,
@@ -36,8 +35,6 @@ type TGithubUser = {
   "created_at": string,
   "updated_at": string
 }
-
-// type TGithubUser = {name: string};
 
 type TStatus = 'idle' | 'loading' | 'succeeded' | 'failed';
 
@@ -52,7 +49,6 @@ const initialState: TGithubUserState = {
 };
 
 export const fetchGithubUser = createAsyncThunk('githubUser/fetch', async (login: string, {rejectWithValue}) => {
-  console.log('request ', login);
   const response = await fetch(
     `https://api.github.com/users/${login}`,
     {headers: {
