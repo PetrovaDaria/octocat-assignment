@@ -26,3 +26,7 @@ yarn dev // start app locally
 ```javascript
 yarn test // start tests
 ```
+### Interesting Github logins to test
+
+- igorkamyshev
+- pepelsbey

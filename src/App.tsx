@@ -4,9 +4,9 @@ import './fonts.css';
 import {Header} from "./components/header";
 import {Layout} from "./components/layout";
 import {SearchBar} from "./components/search-bar/search-bar";
-import {UserInfoBlock} from "./components/user-info-block";
-import {Gaps} from "./components/gaps";
-import {CellMargin} from "./components/cell-margin";
+import {UserInfoBlock} from "./features/github-user/ui";
+import {Gaps} from "./components/shared/gaps";
+import {CellMargin} from "./components/shared/cell-margin";
 import {useAppDispatch, useAppSelector} from "./store";
 import {fetchGithubUser, selectGithubUserState} from "./features/github-user/github-user.slice";
 

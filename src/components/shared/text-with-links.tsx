@@ -1,5 +1,5 @@
 import React, {useMemo} from 'react';
-import {TFontColorType, TTypographyProps, Typography} from "./typography";
+import {TTypographyProps, Typography} from "./typography";
 import {Link} from "./link";
 
 type TLinkInfoItemPart = {

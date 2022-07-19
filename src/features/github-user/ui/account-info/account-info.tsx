@@ -1,9 +1,9 @@
 import React from 'react';
-import {Typography} from "../typography";
+import {Typography} from "../../../../components/shared";
 import {accountInfoItemStyle, accountInfoStyle} from "./account-info.style";
-import {selectColorTheme} from "../../features/color-theme/color-theme.slice";
-import {selectGithubUserState} from "../../features/github-user/github-user.slice";
-import {useAppSelector} from "../../store";
+import {selectColorTheme} from "../../../color-theme/color-theme.slice";
+import {selectGithubUserState} from "../../github-user.slice";
+import {useAppSelector} from "../../../../store";
 
 type TAccountInfoItemProps = {
  title: string;

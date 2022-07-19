@@ -4,17 +4,17 @@ import {linkInfoItemStyle, linksInfoStyle} from "./links-info.style";
 // import IconTwitter from '../../assets/icons/icon-twitter.svg?component';
 // import IconWebsite from '../../assets/icons/icon-website.svg?component';
 // import IconCompany from '../../assets/icons/icon-company.svg?component';
-import IconLocation from '../../assets/icons/icon-location.svg';
-import IconTwitter from '../../assets/icons/icon-twitter.svg';
-import IconWebsite from '../../assets/icons/icon-website.svg';
-import IconCompany from '../../assets/icons/icon-company.svg';
-import {TFontColorType, Typography} from "../typography";
-import {iconStyle} from "../../styles";
-import {Link} from "../link";
-import {selectGithubUserState} from "../../features/github-user/github-user.slice";
-import {selectColorTheme} from "../../features/color-theme/color-theme.slice";
-import {TextWithLinks} from "../text-with-links";
-import {useAppSelector} from "../../store";
+import IconLocation from '../../../../assets/icons/icon-location.svg';
+import IconTwitter from '../../../../assets/icons/icon-twitter.svg';
+import IconWebsite from '../../../../assets/icons/icon-website.svg';
+import IconCompany from '../../../../assets/icons/icon-company.svg';
+import {TFontColorType, Typography} from "../../../../components/shared/typography";
+import {iconStyle} from "../../../../styles";
+import {Link} from "../../../../components/shared";
+import {selectGithubUserState} from "../../github-user.slice";
+import {selectColorTheme} from "../../../color-theme/color-theme.slice";
+import {TextWithLinks} from "../../../../components/shared";
+import {useAppSelector} from "../../../../store";
 
 type TLinkInfoItemProps = {
   icon: React.ReactNode;
@@ -23,7 +23,7 @@ type TLinkInfoItemProps = {
   ariaLabel?: string;
 }
 
-export const LinkInfoItem = ({icon, text, link, ariaLabel}: TLinkInfoItemProps): JSX.Element => {
+export const SimpleLinkInfoItem = ({icon, text, link, ariaLabel}: TLinkInfoItemProps): JSX.Element => {
   const formattedText = text ? text : 'Not available';
   const fontColorType: TFontColorType = text ? 'main' : 'not_available';
 
@@ -52,7 +52,7 @@ type TLinkInfoItemProps2 = {
   ariaLabel?: string;
 }
 
-const LinkInfoItem2 = ({icon, text, ariaLabel}: TLinkInfoItemProps2) => {
+const LinkInfoItem = ({icon, text, ariaLabel}: TLinkInfoItemProps2) => {
   return (
     <div className={linkInfoItemStyle} aria-label={ariaLabel}>
       {icon}
@@ -79,27 +79,27 @@ export const LinksInfo = ({}: TLinksInfoProps): JSX.Element => {
 
  return (
   <div className={linksInfoStyle}>
-    <LinkInfoItem
+    <SimpleLinkInfoItem
       // icon={<IconLocation className={iconStyle(theme, Boolean(user?.location))}/>}
       icon={<img src={IconLocation}/>}
       text={user?.location}
       ariaLabel={'location-link'}
     />
-    <LinkInfoItem
+    <SimpleLinkInfoItem
       // icon={<IconTwitter className={iconStyle(theme, Boolean(twitterText))}/>}
       icon={<img src={IconTwitter}/>}
       text={twitterText} link={twitterLink}
       ariaLabel={'twitter-link'}
     />
-    <LinkInfoItem
+    <SimpleLinkInfoItem
       // icon={<IconWebsite className={iconStyle(theme, Boolean(user?.blog))}/>}
       icon={<img src={IconWebsite}/>}
       text={user?.blog} link={user?.blog}
       ariaLabel={'blog-link'}
     />
     {user?.company ?
-      <LinkInfoItem2 icon={iconCompany} text={user?.company} ariaLabel={'company-link'}/> :
-      <LinkInfoItem icon={iconCompany} ariaLabel={'company-link'}/>
+      <LinkInfoItem icon={iconCompany} text={user?.company} ariaLabel={'company-link'}/> :
+      <SimpleLinkInfoItem icon={iconCompany} ariaLabel={'company-link'}/>
     }
   </div>
  );

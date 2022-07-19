@@ -1,9 +1,9 @@
 import React from 'react';
-import {TFontColorType, TTypographyProps, TTypographyType, typographyStyle} from "./typography";
 import {css, cx} from "@emotion/css";
-import {TTheme} from "../styles";
-import {selectColorTheme} from "../features/color-theme/color-theme.slice";
-import {useAppSelector} from "../store";
+import {TTheme} from "../../styles";
+import {selectColorTheme} from "../../features/color-theme/color-theme.slice";
+import {useAppSelector} from "../../store";
+import {TFontColorType, TTypographyType, TTypographyProps, typographyStyle} from "./typography";
 
 type TLinkProps = {
   href: string;

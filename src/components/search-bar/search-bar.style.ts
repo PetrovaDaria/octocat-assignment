@@ -1,5 +1,6 @@
 import {css, cx} from "@emotion/css";
-import {baseBlockStyle, darkTheme, h3CssObject, h3Style, mainFontColorCssObject, TTheme} from "../../styles";
+import {baseBlockStyle,mainFontColorCssObject, TTheme} from "../../styles";
+import {h3CssObject} from "../shared/typography/typography.style";
 
 export const searchBarStyle = (theme: TTheme) => cx(
   baseBlockStyle(theme),

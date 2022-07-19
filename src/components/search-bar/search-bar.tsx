@@ -2,7 +2,7 @@ import React, {useCallback, useMemo, useState} from 'react';
 // import IconSearch from '../../assets/icons/icon-search.svg?component';
 import IconSearch from '../../assets/icons/icon-search.svg';
 import {buttonStyle, inputStyle, searchBarStyle} from "./search-bar.style";
-import {Typography} from "../typography";
+import {Typography} from "../shared/typography/typography";
 import {selectColorTheme} from "../../features/color-theme/color-theme.slice";
 import {fetchGithubUser} from "../../features/github-user/github-user.slice";
 import {RootState, useAppDispatch, useAppSelector} from "../../store";

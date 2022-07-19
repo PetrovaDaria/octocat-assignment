@@ -1,5 +1,5 @@
 import {css, cx} from "@emotion/css";
-import {baseBlockStyle, TTheme} from "../../styles";
+import {baseBlockStyle, TTheme} from "../../../../styles";
 
 export const userInfoBlockStyle = (theme: TTheme) => cx(
   baseBlockStyle(theme),

@@ -1,7 +1,7 @@
 import React from 'react';
-import {ColorThemeToggle} from "../color-theme-toggle/color-theme-toggle";
-import {headerStyle, serviceNameStyle} from "./header.style";
-import {Typography} from "../typography";
+import {ColorThemeToggle} from "../../features/color-theme/ui/color-theme-toggle/color-theme-toggle";
+import {headerStyle} from "./header.style";
+import {Typography} from "../shared/typography/typography";
 
 type THeaderProps = {
 

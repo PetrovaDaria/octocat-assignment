@@ -1,12 +1,12 @@
 import React from 'react';
 import {mainInfoStyle} from "./main-info.style";
-import {Typography} from "../typography";
-import {CellMargin} from "../cell-margin";
-import {selectGithubUserState} from "../../features/github-user/github-user.slice";
-import {parseDate} from "../../dates";
-import {Link} from "../link";
-import {TextWithLinks} from "../text-with-links";
-import {useAppSelector} from "../../store";
+import {Typography} from "../../../../components/shared/typography/typography";
+import {CellMargin} from "../../../../components/shared/cell-margin";
+import {selectGithubUserState} from "../../github-user.slice";
+import {parseDate} from "../../../../utils/dates";
+import {Link} from "../../../../components/shared/link";
+import {TextWithLinks} from "../../../../components/shared/text-with-links";
+import {useAppSelector} from "../../../../store";
 
 type TUserInfoProps = {
 

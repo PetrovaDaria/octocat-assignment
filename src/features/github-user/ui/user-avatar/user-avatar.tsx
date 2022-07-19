@@ -1,7 +1,7 @@
 import React from 'react';
 import {userAvatarStyle} from "./user-avatar.style";
-import {selectGithubUserState} from "../../features/github-user/github-user.slice";
-import {useAppSelector} from "../../store";
+import {selectGithubUserState} from "../../github-user.slice";
+import {useAppSelector} from "../../../../store";
 
 type TUserAvatarProps = {
 

@@ -1,13 +1,13 @@
 import React from 'react';
 import {userInfoBlockStyle} from "./user-info-block.style";
-import {UserAvatar} from "./user-avatar";
-import {MainInfo} from "./main-info";
-import {AccountInfo} from "./account-info";
-import { Gaps } from '../gaps';
-import {LinksInfo} from "./links-info";
-import {selectColorTheme} from "../../features/color-theme/color-theme.slice";
-import {RootState, useAppSelector} from "../../store";
-import {Typography} from "../typography";
+import {UserAvatar} from "../user-avatar/user-avatar";
+import {MainInfo} from "../main-info/main-info";
+import {AccountInfo} from "../account-info/account-info";
+import { Gaps } from '../../../../components/shared/gaps';
+import {LinksInfo} from "../links-info/links-info";
+import {selectColorTheme} from "../../../color-theme/color-theme.slice";
+import {RootState, useAppSelector} from "../../../../store";
+import {Typography} from "../../../../components/shared/typography/typography";
 
 type TUserInfoProps = {
 
